@@ -1,5 +1,4 @@
-const { User } = require('../models')
-const { Item } = require('../models')
+const { Item, User } = require('../models')
 
 const createUser = async (req, res) => {
   try {
