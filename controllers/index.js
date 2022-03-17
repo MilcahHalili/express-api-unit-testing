@@ -1,4 +1,5 @@
 const { User } = require('../models')
+const { Item } = require('../models')
 
 const createUser = async (req, res) => {
   try {
@@ -11,6 +12,22 @@ const createUser = async (req, res) => {
   }
 }
 
+const getAllUsers = async (req, res) => {
+  try {
+    const users = await User.findAll({
+      include: [
+        {
+          model: Item
+        }
+      ]
+    })
+    return res.status(200).json({ users })
+  } catch (error) {
+    return res.status(500).send(error.message)
+  }
+}
+
 module.exports = {
-  createUser
+  createUser,
+  getAllUsers
 }
