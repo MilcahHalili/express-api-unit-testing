@@ -40,4 +40,10 @@ describe('User API', () => {
     expect(res.statusCode).toEqual(200)
     expect(res.body).toHaveProperty('user')
   })
+
+  it('should delete a user', async () => {
+    const res = await request(app)
+      .del('/api/users/3')
+    expect(res.statusCode).toEqual(204)
+  })
 })
